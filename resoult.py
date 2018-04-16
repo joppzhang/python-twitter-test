@@ -9,6 +9,8 @@ dm={}#每个小时对应的消息数量
 du={}#每天那个用户发布最多
 minnum={}#20121103这天的每小时为键，每小时的数量为值
 source={}#微博的客户端来源
+message={'573638104':0}#用户573638104发了多少条微博
+
 with open("twitter.txt",'rb') as f:
 	lines = f.readlines()
 	for line in lines:
@@ -16,6 +18,8 @@ with open("twitter.txt",'rb') as f:
 		w = line.split(",")
 		t[w[0]]=w[6]
 		u[w[1]]=w[2]
+		if w[1]=='"573638104"':
+			message['573638104']=message['573638104']+1
 		if w[7] in source:
 			source[w[7]]=source[w[7]]+1
 		else:
@@ -38,7 +42,8 @@ with open("twitter.txt",'rb') as f:
 				dm[date]=dm[date]+1
 			else:
 				dm[date]=1
-		except Exception:
+		except Exception as ex:
+			# print(ex)
 			continue
 	f.close()
 #用户数量
@@ -115,5 +120,14 @@ with open("twitter.txt",'rb') as f:
 # w[7]就是微博的来源，取w[7]，然后相同的key值加1
 #不同key赋值1
 #因为数据格式不对的问题，获取时间等不一定是一样的列
-sourceresoult = zip(source.values(),source.keys())
-print(sorted(sourceresoult,reverse=True))
+# sourceresoult = zip(source.values(),source.keys())
+# print(sorted(sourceresoult,reverse=True))
+#------------------------------------------
+#UID为573638104的用户 发了多少个微博
+print(message)
+
+#-------------------------------------------
+#定义一个函数,放入任意多的用户uid参数
+#（如果不存在则返回null），函数返回发微薄数最多的用户uid。
+def maxmessageuid(*uid):
+	pass
