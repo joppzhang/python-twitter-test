@@ -89,3 +89,5 @@ for du_date in du:
 		du_result[key[0]]=key[2]
 		temp_key = du_date
 print(du_result)
+#----------------------------------------
+#2012-11-03每小时推特数量
