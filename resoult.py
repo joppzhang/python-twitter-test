@@ -1,6 +1,6 @@
 #coding=utf-8
 import time
-
+ 
 #-------------------------------------
 u={} #用户名-uid
 t={} #发布时间-消息id
@@ -125,9 +125,8 @@ with open("twitter.txt",'rb') as f:
 #------------------------------------------
 #UID为573638104的用户 发了多少个微博
 print(message)
-
 #-------------------------------------------
 #定义一个函数,放入任意多的用户uid参数
 #（如果不存在则返回null），函数返回发微薄数最多的用户uid。
-def maxmessageuid(*uid):
+def maxmessageuid( *uid ):
 	pass
